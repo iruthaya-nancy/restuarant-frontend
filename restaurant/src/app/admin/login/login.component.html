@@ -1,0 +1,28 @@
+<div class = "container">
+<div class="row g-3 align-items-center">
+        <div class="text-center"> 
+            <div class="card">
+                 <form class="box" [formGroup]="loginForm" method="post" (ngSubmit)="onSubmit()" > 
+                    <h4>Admin Login</h4> 
+                    <p class="text-muted"> Please enter your login and password!</p> 
+                    <div class="mb-3">
+                    <label  >First Name </label>
+                    <br>
+                    <input type="text" name="firstname" formControlName="firstName">
+                    <br>
+                    </div>
+                    <div class="mb-3">
+                    <label>Password </label>
+                    <br>
+                     <input type="password"  name="password" formControlName="password"> 
+                     <br>
+                    </div>
+                     <p class="forgot text-muted">Forgot password? Please contact your administrator</p>
+                      <br>
+                      <button type="submit" value = "Login" id="submit" [disabled]="!loginForm.valid" class="btn btn-lg btn-custom btn-dark btn-block">Sign In
+                    </button>
+                    </form>
+                 </div> 
+                </div> 
+            </div>
+</div>

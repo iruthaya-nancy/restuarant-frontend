@@ -1,0 +1,22 @@
+<div class="text-center">
+<h3>Update the food cost</h3>
+<div class="container">
+    <form class="form"   method="post"  (ngSubmit)="onSubmit(updateForm)" #updateForm="ngForm">
+    <div class = "inputContainer">
+        <label for="area">Foods:</label><br>
+      <select id="food" name="food" ngModel [(ngModel)]="menuItems" >
+        <option *ngFor="let food of menuItems" [value]="food.id">{{ food.name }}</option>
+      </select>
+       </div>
+       <div>
+        <label for="price" class="label">Price in ₹</label><br>
+        <input type="number" class="input" placeholder="0.00" name="price" [(ngModel)]="price" value = "price" required>
+       </div>
+       <div>
+        <br>
+        <button type="submit" class="btn btn-primary m-3 "  value="update">Update</button>
+        <a class="btn btn-primary m-3" href="http://localhost:4200/addfood" role="button">Back</a>
+       </div>
+       </form>
+</div>
+</div>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Add Food Items </title>
+  <!-- <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+</head>
+<body>
+
+<div class="container">
+  <h5>Enter the details</h5>
+  
+  <form class="form" method="post"  (ngSubmit)="onSubmit()" #signUpForm="ngForm">
+    <div class="form-group">
+      <label for="">Food Name:</label>
+      <br>
+      <input type="text" class="form-control" id="name" placeholder="Food name" name="name" [(ngModel)]="name" (ngModelChange)="updateAllFieldsFilled()" required>
+    </div>
+    <br>
+   
+    <div>
+        <label>Description: </label>
+        <br>
+        <textarea [(ngModel)]="description" [ngModelOptions]="{standalone: true}" class="form-control" id="description"  rows="3" placeholder="Description of the Food" (ngModelChange)="updateAllFieldsFilled()" required></textarea>
+    </div>
+     <!---->
+     <div class="form-group">
+        <label for="amount">Amount:</label>
+        <br>
+        <input type="number"  value="0.00" class="form-control" id="amount" placeholder="Enter the price" name="amount"  [(ngModel)]="amount" (ngModelChange)="updateAllFieldsFilled()" required >
+      </div>
+      <br>
+    <div class="checkbox">
+      <label><input type="checkbox" [(ngModel)]="isChecked" (change)="doSomething();" name="isActive"  >Available</label>
+    </div>
+    <br>
+    <button type="submit" [disabled]="!allFieldsFilled"  class="btn btn-primary m-3">Submit</button>
+    <a class="btn btn-primary m-3" href="http://localhost:4200/viewfood" role="button">View sold food</a>
+    <a class="btn btn-primary" href="http://localhost:4200/updatecost" role="button">update Cost</a>
+    <label class="logoutLblPos">
+      <button type="button" class="btn btn-outline-dark"  (click)="onClick()" >Logout</button>
+    </label>
+  </form>
+</div>
+<div class="container">
+  <table class="table mx-auto">
+    <tr>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Description</th>
+      <th>Availability</th>
+      <th>update status</th>
+    </tr>
+    <tbody>
+    <tr *ngFor="let menuItem of menuItems">
+      <td>{{menuItem.name}}</td>
+      <td>{{menuItem.amount}}</td>
+      <td>{{menuItem.description}}</td>
+      <!--<td >{{menuItem.isActive}}</td>--->
+      <span *ngIf="menuItem.isActive; else elseBlock">&#10004;</span>
+      <td><button class="btn btn-primary" type="submit" (click)="updateStatus(menuItem)">update</button></td>
+      <ng-template #elseBlock>
+            <span>&#10060;</span>
+      </ng-template>
+      
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
+

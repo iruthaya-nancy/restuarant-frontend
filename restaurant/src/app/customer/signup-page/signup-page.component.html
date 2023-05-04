@@ -1,0 +1,82 @@
+<div class="signupFrm"><!--mehod name-->
+  <form class="form"   method="post"  (ngSubmit)="onSubmit()" #signUpForm="ngForm" ><!--need to store the cusotmer id in local storage-->
+    <h4 class=>Enter your details</h4>
+
+    <div class="inputContainer">
+      <label for="" class="label">First Name</label><br>
+      <input type="text" class="input" placeholder="First Name" name="firstName" [(ngModel)]="firstName" (ngModelChange)="updateAllFieldsFilled()" required>
+      
+    </div>
+
+    <div class="inputContainer">
+      <label for="" class="label">Last Name</label><br>
+      <input type="text" class="input" placeholder="Last Name" name="lastName" [(ngModel)]="lastName" (ngModelChange)="updateAllFieldsFilled()" required>
+      
+    </div>
+
+    <div class="inputContainer">
+      <label for="" class="label">Password</label><br>
+      <input type="password" class="input" placeholder="Password" name="password" [(ngModel)]="password" (ngModelChange)="updateAllFieldsFilled()" required>
+     
+    </div>
+
+    <div class="inputContainer">
+      <label for="" class="label">Confirm Password</label><br>
+      <input type="password" class="input" placeholder="Re type your password" name="retype" [(ngModel)]="retype" required>
+    </div>
+
+    
+    <div class="inputContainer">
+      <label for="" class="label">Enter yor email</label><br>
+      <input type="email" class="input" placeholder="email" name="email" [(ngModel)]="email" (ngModelChange)="updateAllFieldsFilled()" required>
+    
+    </div>
+
+    <div class="inputContainer">
+      <label for="" class="label">Enter yor Phone Number</label><br>
+      <input type="tel" class="input" placeholder="Phone Number" name="phoneNumber" [(ngModel)]="phoneNumber" (ngModelChange)="updateAllFieldsFilled()" required>
+    
+    </div>
+
+    <h4>Contact Information</h4>
+
+    <div class="inputContainer">
+      <label for="" class="label">Door Number</label><br>
+      <input type="text" class="input" placeholder="Door Number" name="doorNo" [(ngModel)]="doorNo" (ngModelChange)="updateAllFieldsFilled()" required>
+    
+    </div>
+
+    <div class="inputContainer">
+      <label for="" class="label">Sreet Name</label><br>
+      <input type="text" class="input" placeholder="Sreet Name" name="street" [(ngModel)]="street" (ngModelChange)="updateAllFieldsFilled()" required>
+    
+    </div>
+
+    <!--<div class="inputContainer">
+      <label for="" class="label">Area Name</label><br>
+      <input type="text" class="input" placeholder="Arean Name">
+    
+    </div>-->
+   <div class = "inputContainer">
+    <label for="area">Area:</label>
+  <select id="area" name="area" ngModel [(ngModel)]="area" (ngModelChange)="updateAllFieldsFilled()" >
+    <option *ngFor="let area of areas" [value]="area.id">{{ area.name }}-{{area.pincode}}</option>
+  </select>
+   </div>
+   <div class=" inputContainer">
+  <label for="district">District:</label>
+  <select id="district" name="district" ngModel [(ngModel)]="district"  (ngModelChange)="updateAllFieldsFilled()">
+    <option *ngFor="let district of districts" [value]="district.id">{{ district.name }}</option>
+  </select>
+   </div>
+  
+   <label for="state">State:</label>
+   <select id="state" name="state" ngModel [(ngModel)]="state" (ngModelChange)="updateAllFieldsFilled()" >
+     <option *ngFor="let state of states" [value]="state.id">{{ state.name }}</option>
+   </select>
+
+   <div class="d-grid gap-2 col-9 mx-auto">
+    <button type="submit" class=" btn btn-primary btn-lg m-5" [disabled]="!allFieldsFilled"  value="Sign up">sign in</button>
+   </div>
+      </form>
+</div>
