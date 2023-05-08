@@ -5,15 +5,16 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class DeleteOrderService {
+export class UpdateStatusService {
+
 
 
   constructor(private http: HttpClient) { }
 
-  deleteOrder() {
-    const orderId = localStorage.getItem('orderid');
-    this.http.delete(`http://localhost:8080/customer/order?id=${orderId}`).subscribe(data => {
+  update() {
+    var id = localStorage.getItem('update');
+    this.http.patch(`http://localhost:8080/admin/update?id=${id}`, {}).subscribe(data => {
       console.log(data);
-    });
+    })
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "restaurant",
-  "version": "0.0.0",
+  "version": "0.0.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -22,11 +22,10 @@
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.4",
     "jquery": "^3.6.4",
-    "ngx-toastr": "^16.1.1",
-    "nodemailer": "^6.9.1",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4"
+    "zone.js": "~0.11.4",
+    "ngx-toastr": "^15.0.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.2.0",

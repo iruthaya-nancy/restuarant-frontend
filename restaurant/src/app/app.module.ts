@@ -18,8 +18,7 @@ import { DatePipe } from '@angular/common';
 import { LoginComponent } from './admin/login/login.component';
 import { AddFoodComponent } from './admin/add-food/add-food.component';
 import { UpdateCostComponent } from './admin/update-cost/update-cost.component';
-import { EmailComponent } from './customer/email/email.component';
-
+import { ToastrModule } from 'ngx-toastr';
 
 
 
@@ -38,10 +37,6 @@ import { EmailComponent } from './customer/email/email.component';
     LoginComponent,
     AddFoodComponent,
     UpdateCostComponent,
-    EmailComponent,
-    
-  
-    
   
      ],
   imports: [
@@ -51,6 +46,11 @@ import { EmailComponent } from './customer/email/email.component';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut:15000,
+      closeButton:false,
+      progressBar:true
+    }),
   
   ],
   providers: [DatePipe],

@@ -2,33 +2,25 @@
 
 <div class="row">
 
-    <div class="col-md-4" *ngFor="let menuItem of menuItems">
-      <div class="card mb-4">
-        <form class="form"  method="post" (ngClick)= "onClick(buttonType)">
-          <!--"doOrder(menuItem.id)">pass the button id in second function-->
-       <!-- <img class="card-img-top" src='C:/Users/IruthayaNancy/frontend project/frontend/restaurant/src/assets/images/burger.jpg' alt="{{menuItem.name}}">--->
-   
-            
+  <div class="col-md-4" *ngFor="let menuItem of menuItems">
+    <div class="card mb-4">
+      <form class="form" method="post" (ngClick)="onClick(buttonType)">
         <div class="card-body">
           <h5 class="title">{{menuItem.name}}</h5>
           <p class="text">{{menuItem.description}}</p>
           <p class="text">₹{{menuItem.amount}}</p>
-          <!--<button type="submit" id="submit"class="btn btn-primary">Add to Cart</button>--->
           <button class="btn btn-primary" type="submit" (click)="onClick(menuItem.id)">Add to cart</button>
-       
+
         </div>
-        
+
       </form>
-      
-      </div>
-     
+
     </div>
+
+  </div>
 </div>
 
 <div class="d-grid gap-2 col-2 mx-auto">
-  <button class ="btn btn-primary" type="button" (click)="onClick('Next')">Next</button>
+  <button class="btn btn-primary" type="button" (click)="onClick('Next')">Next</button>
 </div>
 <br>
-
-
-<!--to order we need menu id,customer id,mode of paymeny id-->  

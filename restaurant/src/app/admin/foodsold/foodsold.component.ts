@@ -1,14 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewSoldFoodsComponent } from '../view-sold-foods/view-sold-foods.component';
-import { viewFood } from '../viewFood.model';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { foodSold } from 'src/app/customer/modals/foodSold';
 
-interface FoodSold {
-  name: string;
-  count: number;
-}
+
 
 @Component({
   selector: 'app-foodsold',
@@ -20,35 +16,34 @@ interface FoodSold {
 
 export class FoodsoldComponent implements OnInit {
 
-  //viewFoods!:viewFood[]
-    Food!:FoodSold[];
+
+  Foods!: foodSold[];
 
   fromDate = localStorage.getItem('fromDate');
-  toDate  = localStorage.getItem('toDate');
+  toDate = localStorage.getItem('toDate');
 
-  private url = `http://localhost:8080/menu/FoodSold/${this.fromDate}/${this.toDate}`
+  private getFoodSold = `http://localhost:8080/menu/FoodSold/${this.fromDate}/${this.toDate}`
 
-  constructor(private http:HttpClient,private router:Router) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
-    this.viewFood().subscribe((res: any) =>{
-      this.Food = res.data;
+    this.viewFood().subscribe((res: any) => {
+      this.Foods = res.data;
     });
 
   }
 
 
 
-  viewFood():Observable<any>{
-    return this.http.get<any>(this.url);
+  viewFood(): Observable<any> {
+    return this.http.get<any>(this.getFoodSold);
   }
 
-  onClick(){
+  goBack() {
     this.router.navigate(["addfood"])
-      //window.localStorage.removeItem("id");
-      history.pushState(null, '');
+    history.pushState(null, '');
     window.onpopstate = function () {
-    history.go(1);
+      history.go(1);
+    }
   }
-}
 }

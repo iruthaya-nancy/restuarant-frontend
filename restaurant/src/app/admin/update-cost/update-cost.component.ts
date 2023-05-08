@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { menuItem } from 'src/app/customer/customerServices/menu.model';
+import { menuItem } from 'src/app/customer/modals/menu.model';
 import { MenuServiceService } from 'src/app/customer/customerServices/menu-service.service';
-import { UpdateCostService } from '../update-cost.service';
+import { UpdateCostService } from '../AdminServices/update-cost.service';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 @Component({
@@ -12,11 +12,11 @@ import { NgForm } from '@angular/forms';
 export class UpdateCostComponent implements OnInit {
 
   menuItems!: menuItem[];
-  name!:String
-  id!:number
-  price!:number
+  name!: String
+  id!: number
+  price!: number
 
-  constructor(private menuService:MenuServiceService,private updatecostservice:UpdateCostService,private router:Router) { }
+  constructor(private menuService: MenuServiceService, private updateCostService: UpdateCostService, private router: Router) { }
 
   ngOnInit(): void {
     this.getMenuItems();
@@ -26,14 +26,11 @@ export class UpdateCostComponent implements OnInit {
       .subscribe(menuItems => this.menuItems = menuItems.data);
   }
 
-  onSubmit(form:NgForm){
+  onSubmit(form: NgForm) {
     const data = form.value;
     var id = data.food;
-    // var price = data.price;
-    window.localStorage.setItem('id',id);
-    // window.localStorage.setItem('price',price);
-    this.updatecostservice.updatecost(this.price);
-    
+    this.updateCostService.updatecost(id,this.price);
+    window.alert('Cost Updated Successfully');
   }
 
 
