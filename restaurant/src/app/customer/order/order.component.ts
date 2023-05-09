@@ -34,6 +34,8 @@ export class OrderComponent implements OnInit {
   disableButton: boolean = true
   item!: menuItem[];
   showCancelToast: boolean = false;
+  list!: number[];
+  
 
 
   constructor(private http: HttpClient,private toastr:ToastrService, private router: Router, private paymentmodeservice: PaymentmodeServiceService, private orderService: OrderServiceService, private deleteOrderService: DeleteOrderService, private getfoodItem: FoodItemService) {
@@ -44,6 +46,7 @@ export class OrderComponent implements OnInit {
     this.getfoodItem.foodItem().subscribe(
       item => {
         this.item = item.data;
+        this.list = this.item.map(food => food.amount);
       }, error => console.log(error))
 
     this.paymentmodeservice.getPaymentMode().subscribe(
@@ -56,7 +59,7 @@ export class OrderComponent implements OnInit {
     amount: '',
   };
 
-  onSubmit(form: NgForm) {
+  toConfirmOrder(form: NgForm) {
     this.disableButton = false;
     const data = form.value;
     console.log(data);
@@ -66,7 +69,7 @@ export class OrderComponent implements OnInit {
       this.disableButton = true;
     }, 35000);
 
-
+   
     this.orderService.confirmOrder();
     const Btn = document.getElementById('confirm');
     if (Btn) {
@@ -96,9 +99,29 @@ export class OrderComponent implements OnInit {
 
   }
 
+
+  toCalculateTotal():any{
+    
+    let total = 0;
+    let val;
+        const food = window.localStorage.getItem('menu');
+        if (food != null) {
+          const menu = JSON.parse(food) as { [key: string]: number };
+          const values = Object.values(menu);
+          for (let i = 0; i < values.length; i++) {
+            total += values[i] * this.list[i];
+          }
+              return total;
+        }
+    
+  }
+  
+
+
   onClick(buttonType: any) {
     if (buttonType === "delete") {
-      window.alert('Order Cancelled successfully')
+      this.toastr.success('Order Cancelled successfully')
+      this.disableButton = true;
       this.deleteOrderService.deleteOrder();
     }
     else {
@@ -115,7 +138,6 @@ export class OrderComponent implements OnInit {
 
   deleteFood(id: any) {
 
-
     const liveToastBtn = document.getElementById('liveToastBtn');
     if (liveToastBtn) {
       window.alert("Food cancelled successfully")
@@ -129,8 +151,6 @@ export class OrderComponent implements OnInit {
     window.localStorage.setItem('menu', JSON.stringify(menu));
     this.item = this.item.filter(food => food.id != id)
     console.log(this.item);
-
-
 
   }
 

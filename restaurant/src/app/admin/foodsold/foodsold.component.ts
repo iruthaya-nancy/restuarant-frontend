@@ -39,11 +39,16 @@ export class FoodsoldComponent implements OnInit {
     return this.http.get<any>(this.getFoodSold);
   }
 
-  goBack() {
+  goBack(type:any) {
+    if(type == 'main'){
     this.router.navigate(["addfood"])
     history.pushState(null, '');
     window.onpopstate = function () {
       history.go(1);
+    }
+    }
+    else{
+      this.router.navigate(["viewfood"])
     }
   }
 }

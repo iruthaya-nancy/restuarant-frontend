@@ -21,14 +21,9 @@ export class ViewSoldFoodsComponent implements OnInit {
     this.onViewFood()
   }
 
-
-
-
-
-
   onSubmit() {
-    var Date1 = (<HTMLInputElement>document.getElementById("from"));
-    var Date2 = (<HTMLInputElement>document.getElementById("to"));
+    var Date1 = (<HTMLInputElement>document.getElementById("startDate"));
+    var Date2 = (<HTMLInputElement>document.getElementById("endDate"));
 
     localStorage.setItem("fromDate", Date1.value);
     localStorage.setItem("toDate", Date2.value);
