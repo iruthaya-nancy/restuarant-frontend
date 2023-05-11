@@ -1,0 +1,26 @@
+<h4>Today's menu</h4>
+
+<div class="row">
+
+  <div class="col-md-4" *ngFor="let menuItem of menuItems">
+    <div class="card mb-4">
+      <form class="form" method="post" (ngClick)="onClick(buttonType)">
+        <div class="card-body">
+          <h5 class="title">{{menuItem.name}}</h5>
+          <p class="text">{{menuItem.description}}</p>
+          <p class="text">₹{{menuItem.amount}}</p>
+          <button class="btn btn-primary" type="submit" (click)="onClick(menuItem.id)">Add to cart</button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="d-grid gap-2 col-2 mx-auto">
+  <button class="btn btn-primary" type="button" (click)="onClick('Next')">Next</button>
+</div>
+<br>

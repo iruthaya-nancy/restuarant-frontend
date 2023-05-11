@@ -1,0 +1,61 @@
+.center {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;  
+  }
+
+  .logoutLblPos{
+
+    position:fixed;
+    right:10px;
+    top:5px;
+ }
+
+ .card {
+
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
+  width: 400px;
+
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30vh;
+}
+
+/* button{
+  position: relative;
+}
+button::after{
+  content: attr(data-title);
+  position: absolute;
+  background: #444;
+  color: #fff;
+  left: 0;
+  top: 100%;
+  font-size: 12px;
+  width: 100px;
+  padding: 5px;
+  border-radius: 4px;
+  transition: 300ms;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(15px);
+}
+button:hover::after{
+  opacity: 1;
+  transform: translateY(5px);
+  
+} */
+/* 
+{
+  animation: true,
+  autohide: true,
+  delay: 500
+} */
